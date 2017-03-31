@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Loewenstark_CategoryOrder>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends></depends>
+        </Loewenstark_CategoryOrder>
+    </modules>
+</config>

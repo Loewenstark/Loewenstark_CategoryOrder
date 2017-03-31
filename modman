@@ -1,0 +1,4 @@
+src/code                                    app/code/local/Loewenstark/CategoryOrder
+src/Loewenstark_CategoryOrder.xml           app/etc/modules/
+src/design/loewenstark_categoryorder.xml    app/design/frontend/base/default/layout/loewenstark_categoryorder.xml
+src/design/template                         app/design/frontend/base/default/template/loewenstark/categoryorder

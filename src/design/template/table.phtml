@@ -1,0 +1,96 @@
+<?php
+$_helper = $this->helper('catalog/output');
+$_category = $this->getCurrentCategory();
+?>
+<style>
+    /* Kann entfernt werden, war nur zum Entwickeln in einem anderen Shop relevant */
+    #categoryorder_table,
+    #categoryorder_table *{
+        box-sizing: border-box;   
+    }
+
+    #categoryorder_table .row {
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: 5px;
+        padding-bottom:5px;
+    }
+
+    #categoryorder_table .row.body:nth-child(2n) {
+        background-color:#f7f5f5;
+    }
+
+    #categoryorder_fixed_button{
+        position: fixed;
+        bottom: 0;
+        background-color: #e2001a;
+        z-index: 10;
+        width:100%;
+        left:0;
+        padding:20px;
+        text-align: right;
+    }
+</style>
+
+<div class="page-title category-title">
+    <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+</div>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<form action="<?php echo $this->getFormAction() ?>" method="post" id="categoryorder_form">
+    <div id="categoryorder_fixed_button">
+        <div class="container">
+            <div class="actions">
+                <button type="submit" name="categoryorder_addto" value="1" title="<?php echo $this->__('Add to cart') ?>" class="button"><span><span><?php echo $this->__('Add to cart') ?></span></span></button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="actions">
+        <button type="submit" name="categoryorder_addto" value="1" title="<?php echo $this->__('Add to cart') ?>" class="button"><span><span><?php echo $this->__('Add to cart') ?></span></span></button>
+    </div>
+    <div id="categoryorder_table">
+        <div class="row head">
+            <div class="col-sm-2">
+                <b><?php echo $this->__('SKU') ?></b>
+            </div>
+            <div class="col-sm-3">
+                <b><?php echo $this->__('Name') ?></b>
+            </div>
+            <div class="col-sm-3">
+                <b><?php echo $this->__('Price') ?></b>
+            </div>
+            <div class="col-sm-2">
+                <b><?php echo $this->__('Qty') ?></b>
+            </div>
+            <div class="col-sm-2">
+                <b><?php echo $this->__('Qty in Cart') ?></b>
+            </div>
+        </div>
+
+        <?php foreach ($this->getProductCollection() as $_product): ?>
+            <div class="row body">
+                <div class="col-sm-2">
+                    <?php echo $_helper->productAttribute($_product, $_product->getSku(), 'sku'); ?>
+                </div>
+                <div class="col-sm-3">
+                    <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                </div>
+                <div class="col-sm-3">
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" name="categoryorder_products[<?php echo $_product->getId() ?>]" value="0" />
+                </div>
+                <div class="col-sm-2">
+                    <?php echo $_product->getCartQty() ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <div class="actions">
+        <button type="submit" name="categoryorder_addto" value="1" title="<?php echo $this->__('Add to cart') ?>" class="button"><span><span><?php echo $this->__('Add to cart') ?></span></span></button>
+    </div>
+</form>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout>
+    <loewenstark_categoryorder_category>     
+        <reference name="content">
+            <block type="loewenstark_categoryorder/button" name="categoryorder.button" before="-" template="loewenstark/categoryorder/button.phtml" />
+        </reference>
+    </loewenstark_categoryorder_category>
+    <catalog_category_view>
+        <update handle="loewenstark_categoryorder_category"/>
+    </catalog_category_view>
+    <!--
+    <catalog_category_layered>
+        <update handle="loewenstark_categoryorder_category"/>
+    </catalog_category_layered>
+    -->
+    
+    <loewenstark_categoryorder_category_index>
+        <remove name="right"/>
+        <remove name="left"/>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+            <reference name="content">
+                <block type="loewenstark_categoryorder/table" name="categoryorder.table" before="-" template="loewenstark/categoryorder/table.phtml" />
+            </reference>
+        </reference>
+    </loewenstark_categoryorder_category_index>
+</layout>
