@@ -18,6 +18,11 @@
         <remove name="right"/>
         <remove name="left"/>
         <reference name="root">
+            <reference name="head">
+                <action method="setRobots">
+                    <value>NOINDEX,FOLLOW</value>
+                </action>
+            </reference>
             <action method="setTemplate">
                 <template>page/1column.phtml</template>
             </action>
